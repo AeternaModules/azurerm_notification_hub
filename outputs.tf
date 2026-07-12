@@ -1,3 +1,7 @@
+output "notification_hubs_id" {
+  description = "Map of id values across all notification_hubs, keyed the same as var.notification_hubs"
+  value       = { for k, v in azurerm_notification_hub.notification_hubs : k => v.id }
+}
 output "notification_hubs_apns_credential" {
   description = "Map of apns_credential values across all notification_hubs, keyed the same as var.notification_hubs"
   value       = { for k, v in azurerm_notification_hub.notification_hubs : k => v.apns_credential }
