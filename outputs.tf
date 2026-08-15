@@ -4,17 +4,17 @@ output "notification_hubs_id" {
 }
 output "notification_hubs_apns_credential" {
   description = "Map of apns_credential values across all notification_hubs, keyed the same as var.notification_hubs"
-  value       = { for k, v in azurerm_notification_hub.notification_hubs : k => v.apns_credential if v.apns_credential != null && length(v.apns_credential) > 0 }
+  value       = { for k, v in azurerm_notification_hub.notification_hubs : k => one(v.apns_credential) if v.apns_credential != null && length(v.apns_credential) > 0 }
   sensitive   = true
 }
 output "notification_hubs_browser_credential" {
   description = "Map of browser_credential values across all notification_hubs, keyed the same as var.notification_hubs"
-  value       = { for k, v in azurerm_notification_hub.notification_hubs : k => v.browser_credential if v.browser_credential != null && length(v.browser_credential) > 0 }
+  value       = { for k, v in azurerm_notification_hub.notification_hubs : k => one(v.browser_credential) if v.browser_credential != null && length(v.browser_credential) > 0 }
   sensitive   = true
 }
 output "notification_hubs_gcm_credential" {
   description = "Map of gcm_credential values across all notification_hubs, keyed the same as var.notification_hubs"
-  value       = { for k, v in azurerm_notification_hub.notification_hubs : k => v.gcm_credential if v.gcm_credential != null && length(v.gcm_credential) > 0 }
+  value       = { for k, v in azurerm_notification_hub.notification_hubs : k => one(v.gcm_credential) if v.gcm_credential != null && length(v.gcm_credential) > 0 }
   sensitive   = true
 }
 output "notification_hubs_location" {
